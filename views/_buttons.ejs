@@ -1,0 +1,15 @@
+
+<div class="button__wrapper">
+    <a href="/"><h2 class="page__title">PASTEME</h2></a>
+    <div class="buttons">
+        <% if(!locals.hideSaveButton){ %>
+            <button  class="new__btn" title="Save"><i class="far fa-save"></i></button>
+        <% } %>
+        <a href="/new" title="New"><i class="far fa-file"></i></a>
+        <% if(locals.id != null){ %>
+            <a href =<%= `/${locals.id}/dublicate` %>  title="Dublicate and Edit"><i class="fas fa-copy"></i></a>
+        <% } %>
+       
+
+    </div>
+</div>
