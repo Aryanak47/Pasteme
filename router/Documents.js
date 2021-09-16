@@ -12,9 +12,15 @@ router.get("/", (req, res) => {
 });
   
 router.post('/save',async (req,res) => {
+    const updateId = req.query.id
     const value = req.body.value
+    let document;
     try{
-        const document = await userDocument.create({ document: value} )
+        if(updateId !== undefined) {
+            document = await userDocument.findByIdAndUpdate(updateId,{ document: value},{new:true} )
+        }else{
+            document = await userDocument.create({ document: value} )
+        }
         res.redirect(`/${document._id}`)
     }catch(err){
         console.log(err)
@@ -49,7 +55,8 @@ router.get("/:id/dublicate", async(req,res) => {
     try{
         const {document} = await userDocument.findById(id)
         res.render("new",{
-        code:document
+        code:document,
+        id:id
         })
 
     }catch(err){
