@@ -82,3 +82,37 @@ pre{
     align-items: baseline;
    
 }
+
+.login_wrapper{
+    display:flex;
+    justify-content:center;
+    height:100vh;
+    align-items:center;
+
+}
+
+.login__heading{
+    color:#fff;
+    font-size:3rem;
+}
+.login__google a{
+    text-decoration:none;  
+    letter-spacing:5px;
+    font-size:1.7rem;
+    display:inline-block;
+    border:1px solid #fff;
+    padding:5px 15px;
+}
+.login__google .blue{
+    color:#1a73e8;
+}
+.login__google .red{
+    color:#ea4335;
+}
+.login__google .yellow{
+    color:#fbbc05;
+}
+.login__google .green{
+    color:#34a853;
+}
+
