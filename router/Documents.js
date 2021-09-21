@@ -12,10 +12,12 @@ router.get("/login",(req,res) => {
 })
 
 // router.use(checkLogin)
-router.get("/",checkLogin, (req, res,next) => {
+router.get("/",checkLogin,async (req, res,next) => {
     const code = `hello welcome to  Pastebin !`;
+    const document = await userDocument.find({user:req.user.id})
     res.render("index", {
         code,
+        data: document,
         length:code.split("\n").length,
         language:"plaintext"
     });
@@ -49,10 +51,13 @@ router.get('/new',checkLogin,(req,res,next) => {
 router.get('/document/:id',checkLogin,async (req,res,next) => {
     const { id } =req.params
     try{
-        const {document} = await userDocument.findById(id)
+        const arr=[]
+        const userDoc = await userDocument.findById(id)
+        arr.push(userDoc)
         res.render("index",{
-        code:document,
-        length:document.split("\n").length,
+        code:userDoc.document,
+        data:arr,
+        length:userDoc.document.split("\n").length,
         id
         })
     }catch(err){

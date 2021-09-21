@@ -2,12 +2,11 @@ body{
     background-color: #002b36;
     font-size:1rem;
     margin:0;
+    overflow:hidden;
 }
 .wrapper{
     display:flex;
     padding: 1rem .5rem;
-    align-items: center;
-   
 }
 
 .line__numbers{
@@ -115,4 +114,56 @@ pre{
 .login__google .green{
     color:#34a853;
 }
+.item__right{
+    flex: 1 1 75%;
+    /* display: flex; */
+    padding: 1rem .5rem;
+    /* align-items: center; */
+}
+.item__left{
+    flex: 1 1 25%;
+    padding:0 1rem;
+    border:1px solid #2c3338;
+    height: 100vh;
+    overflow: overlay;
+}
+.note__body{
+    max-width:230px;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.note__list:hover{
+    cursor:pointer;    
 
+}
+
+.item{
+    display:flex;
+    align-items:center;
+
+}
+.note__list{
+    background: transparent;
+    border:none;
+    outline: none;
+    overflow:hidden;
+    color:#fff;
+    margin-bottom: 10px;
+    display: block;
+}
+.note{
+    padding:10px    
+
+}
+.note__title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style:italic;
+    display: flex;
+}
+
+.simplebar-scrollbar::before {
+    background-color: #93a1a1 !important;
+  }

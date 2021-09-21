@@ -8,19 +8,43 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js" integrity="sha512-MinqHeqca99q5bWxFNQEQpplMBFiUNrEwuuDj2rCSh1DgeeTXUgvgYIHZ1puBS9IKBkdfLMSk/ZWVDasa3Y/2A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"   />
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
 
 </head>
 <body> 
-    <div class="wrapper">
-        <%- include('_buttons.ejs',{hideSaveButton:true}) %>
-        <div class="line__numbers">
-           <% for( let index = 1; index <= JSON.stringify(length); index++ ) { %>
-            <div> <%= index  %>  </div>
-           <% } %>  
+    <div class="wrapper" >
+        <div id="scroll" class="item__left" data-simplebar>
+            <div class="note">
+                <% for(var i=0; i < data.length; i++) { %>
+                    <button class="note__list">
+                        <div class="note__title"><%= data[i].document.split(" ")[0] %> </div>
+                        <div class="note__body"><%= data[i].document %> </div>
+                    </button>
+                    <% } %>  
+                <%  if (data.length ==0) { %>
+                    <h2 style="color:#fff;">Nothing to show !</h2>
+
+                <% } %>   
+             
+            </div>
         </div>
-    <pre><code id="code-display" class= <%= locals.language ? `language-${locals.language}`: '' %> ><%= code  %> </code></pre>
-</div>
-    
+  
+        <div class="item__right">
+            <div class="item">
+                <%- include('_buttons.ejs',{hideSaveButton:true}) %>
+                <div class="line__numbers">
+                <% for( let index = 1; index <= JSON.stringify(length); index++ ) { %>
+                    <div> <%= index  %>  </div>
+                <% } %>  
+                </div>
+                <pre><code id="code-display" class= <%= locals.language ? `language-${locals.language}`: '' %> ><%= code  %> </code></pre>
+            </div>
+        </div>
+        
+
+    </div>
+       
 </body>
 
 </html>
