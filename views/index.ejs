@@ -17,7 +17,7 @@
         <div id="scroll" class="item__left" data-simplebar>
             <div class="note">
                 <% for(var i=0; i < data.length; i++) { %>
-                    <button class="note__list">
+                    <button data-id= <%= data[i]._id %>  class="note__list">
                         <div class="note__title"><%= data[i].document.split(" ")[0] %> </div>
                         <div class="note__body"><%= data[i].document %> </div>
                     </button>
@@ -46,5 +46,5 @@
     </div>
        
 </body>
-
+<script src="/js/common.js"></script>
 </html>
