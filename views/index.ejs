@@ -16,20 +16,30 @@
     <div class="wrapper" >
         <div id="scroll" class="item__left" data-simplebar>
             <div class="note">
+                <div class="pinDocument">
+                </div>
                 <% for(var i=0; i < data.length; i++) { %>
-                    <button data-id= <%= data[i]._id %>  class="note__list">
-                        <div class="note__title"><%= data[i].document.split(" ")[0] %> </div>
-                        <div class="note__body"><%= data[i].document %> </div>
-                    </button>
+                    <% var pinned = data[i].pinned  %>
+                    <% if(pinned){ %>
+                        <div class="pinnedData" data-pinned="<%= JSON.stringify(data[i]) %>" ></div>
+                      <% } else{ %>  
+                        <div class="pin">
+                            <button class="pin-btn pin-inactive" ><i class="fas fa-thumbtack"></i></button>
+                        </div>
+                        <button data-id= <%= data[i]._id %>  class="note__list">
+                            <div class="note__title">
+                                <span><%= data[i].document.split(" ")[0] %></span>
+                            </div>
+                          
+                            <div class="note__body"><%= data[i].document %> </div>
+                        </button>
+                     <% } %>
                     <% } %>  
                 <%  if (data.length ==0) { %>
                     <h2 style="color:#fff;">Nothing to show !</h2>
-
                 <% } %>   
-             
             </div>
         </div>
-  
         <div class="item__right">
             <div class="item">
                 <%- include('_buttons.ejs',{hideSaveButton:true}) %>
@@ -41,10 +51,8 @@
                 <pre><code id="code-display" class= <%= locals.language ? `language-${locals.language}`: '' %> ><%= code  %> </code></pre>
             </div>
         </div>
-        
-
     </div>
-       
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js" integrity="sha512-lTLt+W7MrmDfKam+r3D2LURu0F47a3QaW5nF0c6Hl0JDZ57ruei+ovbg7BrZ+0bjVJ5YgzsAWE+RreERbpPE1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="/js/common.js"></script>
 </html>

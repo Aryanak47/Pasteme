@@ -10,6 +10,8 @@ require("./utils/auth")
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.json());
+app.use(express.urlencoded({extended:true}))
 app.use(session({ secret: 'session of pasteme' }));
 app.use(passport.initialize());
 app.use(passport.session());

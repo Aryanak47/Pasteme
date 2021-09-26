@@ -55,14 +55,26 @@ router.get('/document/:id',checkLogin,async (req,res,next) => {
         const userDoc = await userDocument.findById(id)
         arr.push(userDoc)
         res.render("index",{
-        code:userDoc.document,
-        data:arr,
-        length:userDoc.document.split("\n").length,
-        id
+            code:userDoc.document,
+            data:arr,
+            length:userDoc.document.split("\n").length,
+            id
         })
     }catch(err){
         console.log(err)
         res.send("Something went wrong !")
+    }
+})
+router.put('/document/:id',checkLogin,async (req,res,next) => {
+    try {
+        if(req.body.pinned !== undefined){
+            await userDocument.updateMany({pinned:false})
+        }
+        await userDocument.findByIdAndUpdate(req.params.id,req.body)
+        res.sendStatus(204)
+    } catch (error) {
+        res.sendStatus(500)
+        console.log(error) 
     }
 })
   

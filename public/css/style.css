@@ -4,6 +4,13 @@ body{
     margin:0;
     overflow:hidden;
 }
+button{
+    background:transparent;
+    border:none;
+}
+button:hover{
+  cursor:pointer;
+}
 .wrapper{
     display:flex;
     padding: 1rem .5rem;
@@ -167,3 +174,20 @@ pre{
 .simplebar-scrollbar::before {
     background-color: #93a1a1 !important;
   }
+  .pin{
+      display:flex;
+      justify-content:flex-end;
+  }
+  .pin .pin-inactive{
+      color:grey;
+  }
+  .pin-active{
+      color:#fff
+  }
+.pinIcon{
+     display:flex;
+     justify-content:flex-end;
+}
+.pinLabel{
+    margin-left:10px;
+}
